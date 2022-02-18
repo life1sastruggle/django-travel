@@ -4,16 +4,16 @@ from django.utils.timezone import now
 
 class Comments(models.Model):
     id = models.CharField(max_length=32, primary_key=True)
-    body = models.TextField(blank=True)
-    creation_time = models.DateTimeField(default=now)
-    update_time = models.DateTimeField(blank=True)
-    expiration_time = models.DateTimeField(blank=True)
+    body = models.TextField(blank=True, null=True)
+    creationTime = models.DateTimeField(default=now, db_column='creation_time')
+    updateTime = models.DateTimeField(blank=True, null=True, db_column='update_time')
+    expirationTime = models.DateTimeField(blank=True, null=True, db_column='expiration_time')
 
     class Meta:
-        ordering = ['creation_time', 'id']
+        ordering = ['creationTime', 'id']
         db_table = 'comments'
-        verbose_name = 'comment'
-        verbose_name_plural = 'comments'
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
 
     def __str__(self):
         return self.name
