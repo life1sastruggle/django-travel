@@ -2,22 +2,22 @@ from django.db import models
 from django.utils.timezone import now
 
 
-class Spots(models.Model):
+class Spot(models.Model):
     id = models.CharField(max_length=32, primary_key=True)
     name = models.TextField(blank=True, null=True)
     price = models.IntegerField(blank=True, null=True)
-    picUrl = models.URLField(blank=True, null=True, db_column='pic_url')
+    pic_url = models.URLField(blank=True, null=True)
     score = models.DecimalField(blank=True, max_digits=2, decimal_places=1, default=0.0)
     intro = models.TextField(blank=True, null=True)
     longitude = models.DecimalField(blank=True, null=True, decimal_places=7, max_digits=10)
     latitude = models.DecimalField(blank=True, null=True, decimal_places=7, max_digits=10)
-    creationTime = models.DateTimeField(default=now, null=True, db_column='creation_time')
-    updateTime = models.DateTimeField(blank=True, null=True, db_column='update_time')
-    expirationTime = models.DateTimeField(blank=True, null=True, db_column='expiration_time')
+    creation_time = models.DateTimeField(default=now, null=True)
+    update_time = models.DateTimeField(blank=True, null=True)
+    expiration_time = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        ordering = ['creationTime', 'id']
-        db_table = 'spots'
+        ordering = ['creation_time', 'id']
+        db_table = 'spot'
         verbose_name = 'Spot'
         verbose_name_plural = 'Spots'
 

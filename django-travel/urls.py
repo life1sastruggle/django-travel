@@ -1,6 +1,6 @@
 """django-travel URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The `urlpatterns` list route URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
 Function views
@@ -17,16 +17,19 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from rest_framework.routers import DefaultRouter
 
-from routes.views import RoutesViewSet
+from route.views import RouteViewSet, RouteSpotMappingView
+from spot.views import SpotViewSet
 
 router = DefaultRouter()
-router.register('routes', RoutesViewSet)
+router.register('route', RouteViewSet)
+router.register('spot', SpotViewSet)
+
 urlpatterns = [
 
 ]
 urlpatterns += router.urls
 urlpatterns = [
     re_path('^', include(router.urls)),
+    path('route_spot', RouteSpotMappingView.as_view(), name='route_spot'),
     path('admin/', admin.site.urls),
-    # path(r'^routes', RoutesView.as_view(), name='routes')
 ]
