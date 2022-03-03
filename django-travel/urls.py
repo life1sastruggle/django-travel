@@ -13,10 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, re_path, include
 from rest_framework.routers import DefaultRouter
 
+from comment.views import SpotCommentMappingView
 from route.views import RouteViewSet, RouteSpotMappingView
 from spot.views import SpotViewSet
 
@@ -30,6 +32,7 @@ urlpatterns = [
 urlpatterns += router.urls
 urlpatterns = [
     re_path('^', include(router.urls)),
-    path('route_spot', RouteSpotMappingView.as_view(), name='route_spot'),
+    path('route_spot/', RouteSpotMappingView.as_view(), name='route_spot'),
+    url(r'spot_comment/(.+)', SpotCommentMappingView.as_view(), name='spot_comment'),
     path('admin/', admin.site.urls),
 ]

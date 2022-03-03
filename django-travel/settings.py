@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'comment',
     'route',
     'spot',
-    'weather',
     'rest_framework'
 ]
 

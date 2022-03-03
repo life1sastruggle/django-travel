@@ -11,7 +11,7 @@ class Route(models.Model):
     pic_url = models.URLField(blank=True, null=True)
     score = models.DecimalField(max_digits=2, decimal_places=1, default=0.0, null=True)
     intro = models.TextField(blank=True, null=True)
-    spots = models.ManyToManyField(Spot, through='RouteSpotMapping')
+    spot = models.ManyToManyField(Spot, through='RouteSpotMapping')
     creation_time = models.DateTimeField(default=now, null=True)
     update_time = models.DateTimeField(blank=True, null=True)
     expiration_time = models.DateTimeField(blank=True, null=True)

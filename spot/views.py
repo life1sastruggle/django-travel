@@ -12,7 +12,7 @@ class SpotViewSet(ModelViewSet):
     queryset = Spot.objects.all()
 
     def list(self, request, **kwargs):
-        queryset = Spot.objects.all().filter(expirationTime=None)
+        queryset = Spot.objects.all().filter(expiration_time=None)
         serializer = SpotSerializer(queryset, many=True)
         response = {'code': 0, 'data': serializer.data, 'msg': '', 'total': len(serializer.data)}
         return Response(response)

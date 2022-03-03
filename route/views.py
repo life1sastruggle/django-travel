@@ -1,3 +1,5 @@
+import json
+
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
@@ -23,9 +25,10 @@ class RouteViewSet(ModelViewSet):
 
 
 class RouteSpotMappingView(APIView):
-    def get(self, request, *args, **kwargs):
-        route_id = self.request.data['route_id']
-        serializer = SpotSerializer(Route.objects.get(id=route_id).spots.all(), many=True)
+    def post(self, request, *args, **kwargs):
+        body = json.loads(request.body)
+        route_id = body["route_id"]
+        serializer = SpotSerializer(Route.objects.get(id=route_id).spot.all(), many=True)
         print(serializer.data)
         response = {'code': 0, 'data': serializer.data}
         return Response(response)
