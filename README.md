@@ -1,8 +1,10 @@
 # django-travel
-The back-end of the travel web developed by Django, MySQL, Django REST framework.
->###Back-end 
->git clone https://github.com/life1sastruggle/django-travel.git  
->###Front-end
+>The back-end of the travel web developed by Django, MySQL, Django REST framework.
+
+Back-end   
+>git clone https://github.com/life1sastruggle/django-travel.git
+
+Front-end   
 >git clone https://github.com/life1sastruggle/vue-travel.git  
 
 ## Run in local environment
