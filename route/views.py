@@ -8,7 +8,7 @@ from route.models import Route
 from route.serializers import RouteSerializer
 from rest_framework.response import Response
 
-from spot.serializers import SpotSerializer
+from attraction.serializers import AttractionSerializer
 
 
 class RouteViewSet(ModelViewSet):
@@ -24,11 +24,11 @@ class RouteViewSet(ModelViewSet):
         return Response(response)
 
 
-class RouteSpotMappingView(APIView):
+class RouteAttractionMappingView(APIView):
     def post(self, request, *args, **kwargs):
         body = json.loads(request.body)
         route_id = body["route_id"]
-        serializer = SpotSerializer(Route.objects.get(id=route_id).spot.all(), many=True)
+        serializer = AttractionSerializer(Route.objects.get(id=route_id).attraction.all(), many=True)
         print(serializer.data)
         response = {'code': 0, 'data': serializer.data}
         return Response(response)

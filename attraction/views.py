@@ -2,18 +2,18 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from spot.models import Spot
-from spot.serializers import SpotSerializer
+from attraction.models import Attraction
+from attraction.serializers import AttractionSerializer
 
 
-class SpotViewSet(ModelViewSet):
-    serializer_class = SpotSerializer
+class AttractionViewSet(ModelViewSet):
+    serializer_class = AttractionSerializer
     pagination_class = PageNumberPagination
-    queryset = Spot.objects.all()
+    queryset = Attraction.objects.all()
 
     def list(self, request, **kwargs):
-        queryset = Spot.objects.all().filter(expiration_time=None)
-        serializer = SpotSerializer(queryset, many=True)
+        queryset = Attraction.objects.all().filter(expiration_time=None)
+        serializer = AttractionSerializer(queryset, many=True)
         response = {'code': 0, 'data': serializer.data, 'msg': '', 'total': len(serializer.data)}
         return Response(response)
 

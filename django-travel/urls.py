@@ -18,13 +18,13 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from rest_framework.routers import DefaultRouter
 
-from comment.views import SpotCommentMappingView
-from route.views import RouteViewSet, RouteSpotMappingView
-from spot.views import SpotViewSet
+from comment.views import AttractionCommentMappingView
+from route.views import RouteViewSet, RouteAttractionMappingView
+from attraction.views import AttractionViewSet
 
 router = DefaultRouter()
 router.register('route', RouteViewSet)
-router.register('spot', SpotViewSet)
+router.register('attraction', AttractionViewSet)
 
 urlpatterns = [
 
@@ -32,7 +32,7 @@ urlpatterns = [
 urlpatterns += router.urls
 urlpatterns = [
     re_path('^', include(router.urls)),
-    path('route_spot/', RouteSpotMappingView.as_view(), name='route_spot'),
-    url(r'spot_comment/(.+)', SpotCommentMappingView.as_view(), name='spot_comment'),
+    path('route_Attraction/', RouteAttractionMappingView.as_view(), name='route_attraction'),
+    url(r'attraction_comment/(.+)', AttractionCommentMappingView.as_view(), name='attraction_comment'),
     path('admin/', admin.site.urls),
 ]

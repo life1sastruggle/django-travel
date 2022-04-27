@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'comment',
     'route',
-    'spot',
+    'attraction',
     'rest_framework'
 ]
 
