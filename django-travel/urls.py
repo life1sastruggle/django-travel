@@ -32,7 +32,7 @@ urlpatterns = [
 urlpatterns += router.urls
 urlpatterns = [
     re_path('^', include(router.urls)),
-    path('route_Attraction/', RouteAttractionMappingView.as_view(), name='route_attraction'),
+    path('route_attraction/', RouteAttractionMappingView.as_view(), name='route_attraction'),
     url(r'attraction_comment/(.+)', AttractionCommentMappingView.as_view(), name='attraction_comment'),
     path('admin/', admin.site.urls),
 ]
