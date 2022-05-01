@@ -14,6 +14,7 @@ class File(models.Model):
     creation_time = models.DateTimeField(default=now, null=True)
     update_time = models.DateTimeField(blank=True, null=True)
     expiration_time = models.DateTimeField(blank=True, null=True)
+    image = models.ImageField(upload_to='media', verbose_name='image', null=True)
 
     class Meta:
         ordering = ['creation_time', 'id']
