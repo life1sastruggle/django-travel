@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from file.models import Route
+from route.models import Route
 
 
 class RouteAdmin(admin.ModelAdmin):
