@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'file'
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = 'D:/file'
+MEDIA_URL = '/media/'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -90,9 +91,9 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'travel',
+        'NAME': 'web_travel',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '123456',
         'HOST': '127.0.0.1',
         'TEST': {'CHARSET': 'utf8'},
     }

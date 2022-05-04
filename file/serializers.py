@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-from file.models import File
+from file.models import AttractionImage
 
 
-class FileSerializer(serializers.ModelSerializer):
+class AttractionImageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = File
+        model = AttractionImage
         fields = "__all__"
