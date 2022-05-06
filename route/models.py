@@ -4,11 +4,12 @@ import uuid
 from django.db import models
 from django.utils.timezone import now
 
+from app.utils import generateUUID
 from attraction.models import Attraction
 
 
 class Route(models.Model):
-    id = models.CharField(max_length=32, primary_key=True, default=''.join(str((uuid.uuid5(uuid.NAMESPACE_DNS, str(uuid.uuid1()) + str(random.random())))).split('-')))
+    id = models.CharField(max_length=32, primary_key=True, default=generateUUID)
     name = models.TextField(blank=True, null=True)
     price = models.IntegerField(blank=True, null=True)
     image = models.ImageField(upload_to='route', verbose_name='image', null=True)
@@ -30,7 +31,7 @@ class Route(models.Model):
 
 
 class RouteAttractionMapping(models.Model):
-    id = models.CharField(max_length=32, primary_key=True)
+    id = models.CharField(max_length=32, primary_key=True, default=generateUUID)
     route = models.ForeignKey(Route, on_delete=models.CASCADE)
     attraction = models.ForeignKey(Attraction, on_delete=models.CASCADE)
     creation_time = models.DateTimeField(default=now, blank=True, null=True)
@@ -39,5 +40,5 @@ class RouteAttractionMapping(models.Model):
     class Meta:
         ordering = ['creation_time', 'id']
         db_table = 'route_attraction_mapping'
-        verbose_name = 'RouteAttractionMapping'
-        verbose_name_plural = 'RouteAttractionMappings'
+        verbose_name = 'Route Attraction Mapping'
+        verbose_name_plural = 'Route Attraction Mappings'

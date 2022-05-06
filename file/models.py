@@ -4,11 +4,12 @@ import uuid
 from django.db import models
 from django.utils.timezone import now
 
+from app.utils import generateUUID
 from attraction.models import Attraction
 
 
 class File(models.Model):
-    id = models.CharField(max_length=32, primary_key=True, default=''.join(str((uuid.uuid5(uuid.NAMESPACE_DNS, str(uuid.uuid1()) + str(random.random())))).split('-')))
+    id = models.CharField(max_length=32, primary_key=True, default=generateUUID)
     image = models.ImageField(upload_to='attraction', verbose_name='image', null=True)
     creator_id = models.CharField(max_length=32, blank=True, null=True)
     deleter_id = models.CharField(max_length=32, blank=True, null=True)
