@@ -1,4 +1,4 @@
-"""django-travel URL Configuration
+"""app URL Configuration
 
 The `urlpatterns` list route URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -18,7 +18,6 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, re_path, include
-from django.views.static import serve
 from rest_framework.routers import DefaultRouter
 
 from comment.views import AttractionCommentMappingView
