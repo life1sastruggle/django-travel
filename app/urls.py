@@ -21,7 +21,7 @@ from django.urls import path, re_path, include
 from rest_framework.routers import DefaultRouter
 
 from comment.views import AttractionCommentMappingView
-from file.views import AttractionImageViewSet
+from file.views import AttractionImageViewSet, BannerViewSet
 from route.views import RouteViewSet, RouteAttractionMappingView
 from attraction.views import AttractionViewSet
 
@@ -29,6 +29,7 @@ router = DefaultRouter()
 router.register('route', RouteViewSet)
 router.register('attraction', AttractionViewSet)
 router.register('attraction_image', AttractionImageViewSet, basename='attraction_image')
+router.register('banner', BannerViewSet, basename='banner')
 urlpatterns = [
 
 ]
