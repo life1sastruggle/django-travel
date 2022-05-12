@@ -11,11 +11,9 @@ from attraction.serializers import AttractionSerializer
 class AttractionViewSet(ModelViewSet):
     serializer_class = AttractionSerializer
     pagination_class = PageNumberPagination
-    queryset = Attraction.objects.all()
 
     def list(self, request, **kwargs):
-
-        queryset = Attraction.objects.all().filter(expiration_time=None)
+        queryset = Attraction.objects.prefetch_related('attraction_image')
         if len(self.request.query_params) != 0:
             scenery = self.request.query_params.get("scenery")
             shopping = self.request.query_params.get("shopping")

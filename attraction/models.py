@@ -1,6 +1,3 @@
-import random
-import uuid
-
 from django.db import models
 from django.utils.timezone import now
 from app.utils import generateUUID
@@ -8,7 +5,7 @@ from app.utils import generateUUID
 
 class Attraction(models.Model):
     id = models.CharField(max_length=32, primary_key=True, default=generateUUID)
-    name = models.TextField(blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
     scenery_score = models.DecimalField(blank=True, null=True, decimal_places=9, max_digits=10)
     repast_score = models.DecimalField(blank=True, null=True, decimal_places=9, max_digits=10)
     accommodation_score = models.DecimalField(blank=True, null=True, decimal_places=9, max_digits=10)

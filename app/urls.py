@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, re_path, include
@@ -27,16 +26,14 @@ from attraction.views import AttractionViewSet
 
 router = DefaultRouter()
 router.register('route', RouteViewSet)
-router.register('attraction', AttractionViewSet)
+router.register('attraction', AttractionViewSet, basename='attraction')
 router.register('attraction_image', AttractionImageViewSet, basename='attraction_image')
 router.register('banner', BannerViewSet, basename='banner')
-urlpatterns = [
 
-]
-urlpatterns += router.urls
 urlpatterns = [
     re_path('^', include(router.urls)),
     path('route_attraction/', RouteAttractionMappingView.as_view(), name='route_attraction'),
-    url(r'attraction_comment/(.+)', AttractionCommentMappingView.as_view(), name='attraction_comment'),
+    re_path(r'attraction_comment/(.+)', AttractionCommentMappingView.as_view(), name='attraction_comment'),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += router.urls

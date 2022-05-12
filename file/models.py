@@ -1,6 +1,3 @@
-import random
-import uuid
-
 from django.db import models
 from django.utils.timezone import now
 
@@ -21,8 +18,8 @@ class File(models.Model):
 
 
 class AttractionImage(File):
-    attraction = models.ForeignKey(Attraction, blank=True, null=True, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='attraction', verbose_name='image', null=True)
+    attraction = models.ForeignKey(Attraction, on_delete=models.CASCADE, related_name='attraction_image')
+    image = models.ImageField(upload_to='attraction', null=True)
     name = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:

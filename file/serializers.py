@@ -1,12 +1,11 @@
 from rest_framework import serializers
-
 from file.models import AttractionImage, Banner
 
 
 class AttractionImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = AttractionImage
-        fields = "__all__"
+        fields = ('name', 'image')
 
 
 class BannerSerializer(serializers.ModelSerializer):
